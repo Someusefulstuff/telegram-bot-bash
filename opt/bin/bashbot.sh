@@ -26,8 +26,14 @@ while true; do {
 
 	if [ $OFFSET != 1 ]; then
 		case $MESSAGE in
-			'/info') msg="This is bashbot, the Telegram bot written entirely in bash.";;
+			'/start') msg="Bot answers once per 30 secs, just few commands are implemented. Blame @ryzhov_al if something goes wrong.";;
+			'/top') msg="$(top -n1 | head -n3)";;
+			'/meminfo') msg="$(cat /proc/meminfo)";;
+			'/cpuinfo') msg="$(cat /proc/cpuinfo)";;
+			'/uname') msg="$(uname -a)";;
+			'/log') msg="$(cat /opt/var/log/bashbot.log)";;
 			*) msg="$MESSAGE";;
+
 		esac
 		send_message "$TARGET" "$msg"
 	fi
