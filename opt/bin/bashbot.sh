@@ -1,14 +1,4 @@
-# bashbot, the Telegram bot written in bash.
-# Written by @topkecleon.
-# http://github.com/topkecleon/bashbot
-
-# Depends on JSON.sh (http://github.com/dominictarr/JSON.sh),
-# which is MIT/Apache-licensed.
-
-# This file is public domain in the USA and all free countries.
-# If you're in Europe, and public domain does not exist, then haha.
-
-#!/bin/bash
+#!/opt/bin/bash
 
 TOKEN=''
 URL='https://api.telegram.org/bot'$TOKEN
