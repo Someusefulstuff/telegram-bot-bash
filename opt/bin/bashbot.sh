@@ -20,6 +20,8 @@ while true; do {
 	MESSAGE=$(echo $res | JSON.sh -s | egrep '\["result",0,"message","text"\]' | cut -f 2 | cut -d '"' -f 2)
 	USER=$(echo $res | JSON.sh | egrep '\["result",0,"message","from","username"\]' | cut -f 2 | cut -d '"' -f 2)
 
+	[ -z "$MESSAGE" ] || echo "[$(date +%Y.%m.%d_%H:%M:%S)][$USER] $MESSAGE" >> /opt/var/log/bashbot.log
+
 	OFFSET=$((OFFSET+1))
 
 	if [ $OFFSET != 1 ]; then
