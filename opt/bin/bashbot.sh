@@ -7,16 +7,17 @@ UPD_URL=$URL'/getUpdates?offset='
 OFFSET=0
 
 function send_message {
-	res=$(curl --data-urlencode "text=$2" "$MSG_URL$1&")
+	res=$(curl --insecure --data-urlencode "text=$2" "$MSG_URL$1&")
 }
 
 while true; do {
 
-	res=$(curl $UPD_URL$OFFSET)
+	sleep 30
+	res=$(curl --insecure $UPD_URL$OFFSET)
 
-	TARGET=$(echo $res | ./JSON.sh | egrep '\["result",0,"message","chat","id"\]' | cut -f 2)
-	OFFSET=$(echo $res | ./JSON.sh | egrep '\["result",0,"update_id"\]' | cut -f 2)
-	MESSAGE=$(echo $res | ./JSON.sh -s | egrep '\["result",0,"message","text"\]' | cut -f 2 | cut -d '"' -f 2)
+	TARGET=$(echo $res | JSON.sh | egrep '\["result",0,"message","chat","id"\]' | cut -f 2)
+	OFFSET=$(echo $res | JSON.sh | egrep '\["result",0,"update_id"\]' | cut -f 2)
+	MESSAGE=$(echo $res | JSON.sh -s | egrep '\["result",0,"message","text"\]' | cut -f 2 | cut -d '"' -f 2)
 
 	OFFSET=$((OFFSET+1))
 
