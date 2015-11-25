@@ -5,15 +5,14 @@ URL='https://api.telegram.org/bot'$TOKEN
 MSG_URL=$URL'/sendMessage?chat_id='
 UPD_URL=$URL'/getUpdates?offset='
 OFFSET=0
+TIMEOUT='&timeout=30'
 
 function send_message {
 	res=$(curl --insecure --data-urlencode "text=$2" "$MSG_URL$1&")
 }
 
 while true; do {
-
-	sleep 30
-	res=$(curl --insecure $UPD_URL$OFFSET)
+	res=$(curl --insecure $UPD_URL$OFFSET$TIMEOUT)
 
 	TARGET=$(echo $res | JSON.sh | egrep '\["result",0,"message","chat","id"\]' | cut -f 2)
 	OFFSET=$(echo $res | JSON.sh | egrep '\["result",0,"update_id"\]' | cut -f 2)
