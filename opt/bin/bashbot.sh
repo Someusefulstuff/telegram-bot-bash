@@ -25,7 +25,7 @@ while true; do {
 
 	if [ $OFFSET != 1 ]; then
 		case $MESSAGE in
-			'/start') msg="Bot answers once per 30 secs, just few commands are implemented. Blame @ryzhov_al if something goes wrong.";;
+			'/start') msg="Just few commands are implemented. Blame @ryzhov_al if something goes wrong.";;
 			'/top') msg="$(top -n1 | head -n3)";;
 			'/meminfo') msg="$(cat /proc/meminfo)";;
 			'/cpuinfo') msg="$(cat /proc/cpuinfo)";;
