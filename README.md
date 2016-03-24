@@ -25,4 +25,4 @@ chmod +x /opt/etc/init.d/S51bashbot
 /opt/etc/init.d/S51bashbot start
 ```
 
-Have fun! Add new possibilities to bot as you wish, chat with [ironkakadu_bot](https://web.telegram.org/#/im?p=@ironkakadu_bot) - a running instance of bashbot.
+Have fun!
