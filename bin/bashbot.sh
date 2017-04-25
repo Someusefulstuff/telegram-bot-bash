@@ -1,4 +1,4 @@
-#!/opt/bin/bash
+#!/bin/bash
 
 TOKEN=''
 URL='https://api.telegram.org/bot'$TOKEN
@@ -19,7 +19,7 @@ while true; do {
 	MESSAGE=$(echo $res | JSON.sh -s | egrep '\["result",0,"message","text"\]' | cut -f 2 | cut -d '"' -f 2)
 	USER=$(echo $res | JSON.sh | egrep '\["result",0,"message","from","username"\]' | cut -f 2 | cut -d '"' -f 2)
 
-	[ -z "$MESSAGE" ] || echo "[$(date +%Y.%m.%d_%H:%M:%S)][$USER] $MESSAGE" >> /opt/var/log/bashbot.log
+	[ -z "$MESSAGE" ] || echo "[$(date +%Y.%m.%d_%H:%M:%S)][$USER] $MESSAGE" >> /var/log/bashbot.log
 
 	OFFSET=$((OFFSET+1))
 
@@ -30,7 +30,8 @@ while true; do {
 			'/meminfo') msg="$(cat /proc/meminfo)";;
 			'/cpuinfo') msg="$(cat /proc/cpuinfo)";;
 			'/uname') msg="$(uname -a)";;
-			'/log') msg="$(cat /opt/var/log/bashbot.log)";;
+			'/log') msg="$(cat /var/log/bashbot.log)";;
+			'/test') msg="(echo 'test'";;
 			*) msg="$MESSAGE";;
 
 		esac

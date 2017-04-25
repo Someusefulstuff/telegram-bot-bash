@@ -1,0 +1,10 @@
+5#!/bin/sh
+
+ENABLED=yes
+PROCS=bashbot.sh
+ARGS=""
+PREARGS="dtach -n /var/bashbot.socket"
+DESC=$PROCS
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+. /etc/init.d/rc.func
